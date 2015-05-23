@@ -1,0 +1,36 @@
+/* CSS declarations go here */
+
+body {
+	background-color: #B29772;
+	font-family: Helvetica;
+
+}
+
+.logo {
+	width: 30%;
+	margin-top: 10%;
+
+}
+.titleBlock{
+	text-align: center;
+}
+.buttonLimited {
+	margin-top: 3%;
+	width: 30.5%;
+	height: 10%;
+	font-size: 2em;
+	border-color: black;
+	background-color: #B29772;
+	border-width: 5px;
+}
+.anchor {
+	margin-top: 4%;
+}
+.productImage {
+	width: 95%;
+	height: 300px;
+	  box-shadow: 2px 3px 22px;
+}
+.pure-g {
+	margin: 1%;
+}

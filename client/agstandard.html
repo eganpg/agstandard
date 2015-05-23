@@ -1,0 +1,42 @@
+<head>
+  <title>agstandard</title>
+  <script src="https://js.moltin.com/v1"></script>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+	<div class="titleBlock">
+  	<img class="logo" src="img/logo.png"/>
+  	<!-- <h2>Los Angeles, CA</h2> -->
+  </div>
+  <div class="titleBlock">
+  	<button class="buttonLimited">Store Coming Soon</button>
+  	<br>
+  	<i class="fa fa-anchor fa-3x anchor"></i>
+  </div>
+  <!-- <div>
+  	<p>Total Items in Cart {{cartSize.total_items}}
+	  <button class="empty">Empty Cart</button></p>
+	  <p><button class="checkout">Checkout</button></p>
+	  <div class="pure-g productContainer">
+	  {{#each list}}
+	    <div class="pure-u-1-4 itemContainer">
+	    
+	      
+	      	{{#each images}}
+	        <img class="productImage" src="{{url.http}}"/>
+	        {{/each}}
+	        {{title}}
+	        
+
+	      	<button class="add" id="{{id}}">Add to Cart</button>
+	      
+	    </div>
+	    {{/each}}
+	  </div> -->
+  <!-- </div> -->
+</template>
