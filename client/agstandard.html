@@ -2,6 +2,7 @@
   <title>agstandard</title>
   <script src="https://js.moltin.com/v1"></script>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
 </head>
 
 <body>
@@ -9,34 +10,55 @@
 </body>
 
 <template name="hello">
-	<div class="titleBlock">
-  	<img class="logo" src="img/logo.png"/>
+	<div class="titleBlock pure-g">
+		<div class=" border">
+			{{#if isPhone}}
+
+				<img class="pure-u-23-24  logo logoMobile" src="img/logo.png"/><br>
+  			<button class=" pure-u-23-24 buttonLimitedMobile">Talk to Us</button>
+			{{else}}
+	  		<img class="pure-u-sm-1 pure-u-md-1-3 logo" src="img/logo.png"/><br>
+	  		<button class="pure-u-sm-1 pure-u-md-1-3 buttonLimited">Shop Standard</button>
+  		{{/if}}
+  		<br>
+  		<i class="fa fa-anchor fa-3x anchor"></i>
+		</div>
   	<!-- <h2>Los Angeles, CA</h2> -->
   </div>
   <div class="titleBlock">
-  	<button class="buttonLimited">Store Coming Soon</button>
-  	<br>
-  	<i class="fa fa-anchor fa-3x anchor"></i>
+  	
+  	
+  	
   </div>
-  <!-- <div>
-  	<p>Total Items in Cart {{cartSize.total_items}}
-	  <button class="empty">Empty Cart</button></p>
-	  <p><button class="checkout">Checkout</button></p>
-	  <div class="pure-g productContainer">
+  <div class="productContainer">
+	  <div class="pure-g center">
 	  {{#each list}}
-	    <div class="pure-u-1-4 itemContainer">
+	    <div class="pure-u-1-3 itemContainer">
 	    
 	      
 	      	{{#each images}}
 	        <img class="productImage" src="{{url.http}}"/>
 	        {{/each}}
-	        {{title}}
+	        <h3>{{title}}</h3>
+	        <p>Price {{price.value}}</p>
 	        
 
-	      	<button class="add" id="{{id}}">Add to Cart</button>
+	      	<button class="add buttonLimitedAddToCart" id="{{id}}">Add to Cart</button>
 	      
 	    </div>
 	    {{/each}}
-	  </div> -->
-  <!-- </div> -->
+	  </div>
+	  <div class="titleBlock">
+	  	<h3 class="cartHeader">The Cart</h3>
+	  	{{#each cartSize}}
+	  			<p>{{name}}&nbsp; - ${{price}} <button class="remove buttonLimitedCart">Remove</button></p>
+	  		{{/each}}
+  		<button class="checkout buttonLimitedCheckout" id="{{id}}">Checkout</button><br>
+			<i class="fa fa-anchor fa-3x anchor"></i>	  
+			
+			</div>
+  	</div>
+  <div class="titleBlock">
+	  	<p>AgStandard - 2015</p>
+  	</div>
 </template>

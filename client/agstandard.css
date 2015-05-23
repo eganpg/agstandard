@@ -5,32 +5,92 @@ body {
 	font-family: Helvetica;
 
 }
-
-.logo {
-	width: 30%;
-	margin-top: 10%;
-
+.center {
+	
+	padding-left: 25%;
 }
+.border {
+	width: 100%;
+}
+.logo {
+	margin-top: 10%;
+	text-align: center;
+}
+.logoMobile {
+	margin-top: 30%;
+	/*margin-left: 5%;
+	margin-right: 5%;*/
+}
+
 .titleBlock{
 	text-align: center;
 }
 .buttonLimited {
 	margin-top: 3%;
-	width: 30.5%;
+	width: 100%;
 	height: 10%;
 	font-size: 2em;
 	border-color: black;
 	background-color: #B29772;
 	border-width: 5px;
 }
+.buttonLimitedMobile {
+	/*margin-left: 5%;
+	margin-right: 5%;*/
+	margin-top: 3%;
+	width: 100%;
+	height: 100px;
+	font-size: 4em;
+	border-color: black;
+	background-color: #B29772;
+	border-width: 10px;
+}
+.buttonLimitedAddToCart {
+	margin-top: 3%;
+	width: 95%;
+	height: 10%;
+	font-size: 2em;
+	border-color: black;
+	background-color: #B29772;
+	border-width: 5px;
+}
+.buttonLimitedCheckout {
+	margin-top: 3%;
+	width: 33%;
+	height: 10%;
+	font-size: 2em;
+	border-color: black;
+	background-color: #B29772;
+	border-width: 5px;
+}
+.buttonLimitedCart {
+	width: 6%;
+	height: 10%;
+	border-color: black;
+	background-color: #B29772;
+	border-width: 2px;
+}
 .anchor {
 	margin-top: 4%;
+	text-align: center;
+}
+.productContainer {
+	margin-top: 5%;
+
+}
+.itemContainer {
+	
 }
 .productImage {
 	width: 95%;
 	height: 300px;
-	  box-shadow: 2px 3px 22px;
+	  box-shadow: 2px 3px 12px;
+  border-width: 4px;
+  border-color: black;
 }
 .pure-g {
 	margin: 1%;
+}
+.cartHeader {
+	margin-top: 3%;
 }
