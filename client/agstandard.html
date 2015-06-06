@@ -18,10 +18,10 @@
   			<button class=" pure-u-23-24 buttonLimitedMobile">Talk to Us</button>
 			{{else}}
 	  		<img class="pure-u-sm-1 pure-u-md-1-3 logo" src="img/logo.png"/><br>
-	  		<button class="pure-u-sm-1 pure-u-md-1-3 buttonLimited">Shop Standard</button>
+	  		<button class="down_arrow pure-u-sm-1 pure-u-md-1-3 buttonLimited">Shop Standard</button>
   		{{/if}}
   		<br>
-  		<i class="fa fa-anchor fa-3x anchor"></i>
+  		<i class="fa fa-anchor fa-3x anchor down_arrow"></i>
 		</div>
   	<!-- <h2>Los Angeles, CA</h2> -->
   </div>
@@ -30,34 +30,41 @@
   	
   	
   </div>
+   {{> loginButtons}} 
+  
   <div class="productContainer">
 	  <div class="pure-g center">
-	  {{#each list}}
+	  	{{#each product}}  
 	    <div class="pure-u-1-3 itemContainer">
 	    
-	      
-	      	{{#each images}}
-	        <img class="productImage" src="{{url.http}}"/>
-	        {{/each}}
-	        <h3>{{title}}</h3>
-	        <p>Price {{price.value}}</p>
+	        <img class="productImage" src="{{imageUrl}}"/>
 	        
-
-	      	<button class="add buttonLimitedAddToCart" id="{{id}}">Add to Cart</button>
-	      
+	        <h3>{{productName}}</h3>
+	        <p>Enter Description</p>
+	        <p>Price - ${{productPrice}}</p>
+	      	<button class="add buttonLimitedAddToCart" value="{{cart._id}}" id="{{_id}}">Add to Cart</button>
 	    </div>
 	    {{/each}}
 	  </div>
 	  <div class="titleBlock">
 	  	<h3 class="cartHeader">The Cart</h3>
-	  	{{#each cartSize}}
-	  			<p>{{name}}&nbsp; - ${{price}} <button class="remove buttonLimitedCart">Remove</button></p>
+	  	{{#each cart.items}}
+	  			<p>{{n}}&nbsp; - ${{price}} <button class="remove buttonLimitedCart">Remove</button></p>
 	  		{{/each}}
   		<button class="checkout buttonLimitedCheckout" id="{{id}}">Checkout</button><br>
 			<i class="fa fa-anchor fa-3x anchor"></i>	  
 			
 			</div>
   	</div>
+  <div class="productEntry">
+  	<input class="productname" placeholder="name"/>
+  	<input class="productprice" placeholder="price"/>
+  	<input class="productdescription" placeholder="description"/>
+  	<input class="productquantity" placeholder="quantity"/>
+  	<input class="imageurl" placeholder="image url"/>
+  	<input class="unitdescription" placeholder="unitdescription"/>
+  	<button class="submit">Submit</button>
+  </div>
   <div class="titleBlock">
 	  	<p>AgStandard - 2015</p>
   	</div>

@@ -25,6 +25,9 @@ body {
 .titleBlock{
 	text-align: center;
 }
+.content{
+	/*margin-top: %;*/
+}
 .buttonLimited {
 	margin-top: 3%;
 	width: 100%;

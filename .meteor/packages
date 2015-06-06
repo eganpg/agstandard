@@ -9,3 +9,6 @@ autopublish
 insecure
 fortawesome:fontawesome
 mystor:device-detection
+accounts-password
+accounts-ui
+houston:admin
