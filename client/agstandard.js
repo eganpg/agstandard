@@ -2,6 +2,10 @@ Products = new Mongo.Collection('products');
 Orders = new Mongo.Collection('orders');
 Carts = new Mongo.Collection('carts'); 
 Guides = new Mongo.Collection('guides');
+Meteor.startup(function(){
+  $('.deliveryForm').hide();
+  
+})
 
   Template.hello.helpers({
     product: function(){
@@ -10,63 +14,43 @@ Guides = new Mongo.Collection('guides');
     },
     cart: function(){
       var cart = Carts.findOne({userId: Meteor.userId()});
+      
       if(cart == undefined){
         var carts = Carts.insert({userId: Meteor.userId()});
         console.log('cart is undefined');
-
+        $('.deliveryForm').hide();
         return carts;
       }
       else{
         console.log('defined')
-        console.log(cart);
-        return cart.items
+        if(cart.items == undefined){
+          $('.deliveryForm').hide();
+        }
+        return cart;
 
       }
-      
+    },
+    address: function(){
+      console.log(Meteor.user().address);
     }
-    // list: function(){
-    //   var moltin = new Moltin({publicId: 'PJhJh8SAkrZD27vQmpSXyDVC5VpBVfbhG486apa2'});    
-      
-    //   moltin.Authenticate();
-    //   var product = moltin.Product.List({status: 1});
-    //   console.log(product)
-    //     return product;
-    // },
-    // cartSize: function(){
-    //   var moltin = new Moltin({publicId: 'PJhJh8SAkrZD27vQmpSXyDVC5VpBVfbhG486apa2'});    
-    //   moltin.Authenticate();
-    //   var contents =  moltin.Cart.Contents();
-    //   console.log(contents)
-      
-    //   var arr = Object.keys(contents.contents).map(function(key){return contents.contents[key]});
-    //   console.log(arr);
-    //   return arr;
-    // }
   });
 
   Template.hello.events({
+    
     'click .add': function(e,t){
-      if(!Meteor.user){
+      if(!Meteor.user()){
         alert('please login');
       }
-      if(Meteor.user){
-        
+      if(Meteor.user()){
+        e.preventDefault();
         var val = e.target.value;
-
+        var quant = $('select.' + e.target.id ).val();
+        this.quantity = quant;
         var cart = Carts.update({_id: val}, {$push: {items: this}})
         var currentCart = Carts.findOne({_id: val});
         console.log(currentCart);
       }
-      // console.log(this)
-      // var moltin = new Moltin({publicId: 'PJhJh8SAkrZD27vQmpSXyDVC5VpBVfbhG486apa2'});    
       
-      // moltin.Authenticate();
-      // moltin.Cart.Insert(this.id, '1', null, function(cart) {
-      //     console.log(cart);
-      //     // location.reload();
-      // }, function(error) {
-      //     // Something went wrong...
-      // });
       
       
     },
@@ -81,25 +65,49 @@ Guides = new Mongo.Collection('guides');
       
     },
     'click .remove': function(){
-      // var moltin = new Moltin({publicId: 'PJhJh8SAkrZD27vQmpSXyDVC5VpBVfbhG486apa2'});    
+      var cart = Carts.findOne({userId: Meteor.userId()});
+      console.log(this);
+
+      var index = cart.items.indexOf(this);
+      console.log(index);
+      console.log(cart.items);
       
-      // moltin.Authenticate();
-      // console.log(this);
-      // moltin.Cart.Remove(this.id, function() {
-      //    console.log('great')
-      // }, function(error) {
-      //     console.log(error);
-      // });
-      //  // location.reload();
+          cart.items.splice(index, 1);
+      
+      console.log(cart.items);
+      Carts.update({_id: cart._id}, {items: cart.items});
 
       
     },
+    // Meteor.users.update({_id: Meteor.userId()}, {$addToSet: {'following': this_html}});
     'click .checkout': function(){
-      // var moltin = new Moltin({publicId: 'PJhJh8SAkrZD27vQmpSXyDVC5VpBVfbhG486apa2'});    
-      
-      // moltin.Authenticate();
-
-      // console.log(moltin.Cart.Checkout());
+      var cart = Carts.findOne({userId: Meteor.userId()});
+      console.log(cart.items);
+      if(cart.items != undefined){
+        if(Meteor.user().address == undefined){
+          $('.deliveryForm').show();
+        }
+        else{
+          // Continue with checkout
+        }
+      }
+      else{
+        alert('The Cart Seems to be Empty');
+      }
+    },
+    'click .addressSubmit': function(){
+     
+      var address = $('.address').val();
+      var city = $('.city').val();
+      var state = $('.state').val();
+      var zip = $('.zip').val();
+      var addressObj = {
+        address: address,
+        city: city,
+        state: state,
+        zip: zip
+      }
+      Meteor.call('updateAddress', addressObj);
     },
     'click .submit': function(){
       var productName = $('.productname').val();
